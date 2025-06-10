@@ -9,7 +9,7 @@ from  mongo_models import Organization, User, Project, Repository, Team
 # Step 1: Initialize configuration and MongoDB connection
 ORG_NAME = "DevOpsRealPage"
 #remove this below comment to run your script smoothly
-TOKEN = config('GITHUB_TOKEN', default='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')
+TOKEN = config('GITHUB_TOKEN', default='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')
 REST_BASE_URL = "https://api.github.com"
 GRAPHQL_URL = "https://api.github.com/graphql"
 PER_PAGE = 10
