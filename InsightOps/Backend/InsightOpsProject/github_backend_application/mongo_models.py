@@ -1,78 +1,69 @@
-# myapp/mongo_models.py
-from mongoengine import (
-    Document,
-    StringField,
-    IntField,
-    EmailField,
-    ReferenceField,
-    ListField,
-    CASCADE,
-)
-
+from mongoengine import Document, ReferenceField, StringField, DateTimeField, ListField, IntField
+from datetime import datetime
+ 
 class Organization(Document):
-    name = StringField(max_length=255, unique=True, required=True)
-    total_repositories = IntField(default=0, min_value=0)
-    total_projects = IntField(default=0, min_value=0)
-    active_users_count = IntField(default=0, min_value=0)
-
-    def __str__(self):
-        return self.name
-
+    name = StringField(required=True, unique=True)
+    total_repositories = IntField(default=0)
+    total_projects = IntField(default=0)
+    active_users_count = IntField(default=0)
+    created_at = DateTimeField()
+    fetched_at = DateTimeField()
     meta = {
-        'collection': 'organizations',  # Matches Django's db_table
-        'indexes': ['name'],  # Ensure unique index on name
-    }
-
-class User(Document):
-    organization = ReferenceField(Organization, reverse_delete_rule=CASCADE, required=True)
-    username = StringField(max_length=255, unique=True, required=True)
-    email = EmailField(max_length=255, null=True)
-
-    def __str__(self):
-        return self.username
-
-    meta = {
-        'collection': 'users',  # Matches Django's db_table
-        'indexes': ['username'],  # Ensure unique index on username
-    }
-
-class Project(Document):
-    organization = ReferenceField(Organization, reverse_delete_rule=CASCADE, required=True)
-    name = StringField(max_length=255, required=True)
-    number = IntField(required=True)
-
-    def __str__(self):
-        return f"{self.name} (#{self.number})"
-
-    meta = {
-        'collection': 'projects',  # Matches Django's db_table
         'indexes': [
-            {'fields': ['organization', 'number'], 'unique': True},  # Matches unique_together
-        ],
+            {'fields': ['fetched_at']}  # Index for date range queries
+        ]
     }
-
+ 
+class User(Document):
+    organization = ReferenceField(Organization, required=True)
+    username = StringField(required=True, unique_with='organization')
+    email = StringField()
+    created_at = DateTimeField()
+    fetched_at = DateTimeField()
+    meta = {
+        'indexes': [
+            {'fields': ['organization', 'username'], 'unique': True},
+            {'fields': ['fetched_at']}  # Index for date range queries
+        ]
+    }
+ 
+class Project(Document):
+    organization = ReferenceField(Organization, required=True)
+    number = IntField(required=True, unique_with='organization')
+    name = StringField(required=True)
+    created_at = DateTimeField()
+    fetched_at = DateTimeField()
+    meta = {
+        'indexes': [
+            {'fields': ['organization', 'number'], 'unique': True},
+            {'fields': ['fetched_at']}  # Index for date range queries
+        ]
+    }
+ 
 class Repository(Document):
-    organization = ReferenceField(Organization, reverse_delete_rule=CASCADE, required=True)
-    project = ReferenceField(Project, reverse_delete_rule=CASCADE, required=True)
-    name = StringField(max_length=255, required=True)
-    url = StringField(max_length=500, required=True)
-
-    def __str__(self):
-        return self.name
-
+    organization = ReferenceField(Organization, required=True)
+    project = ReferenceField(Project)
+    name = StringField(required=True, unique_with='organization')
+    url = StringField(required=True)
+    created_at = DateTimeField()
+    fetched_at = DateTimeField()
     meta = {
-        'collection': 'repositories',  # Matches Django's db_table
+        'indexes': [
+            {'fields': ['organization', 'name'], 'unique': True},
+            {'fields': ['fetched_at']}  # Index for date range queries
+        ]
     }
-
+ 
 class Team(Document):
-    organization = ReferenceField(Organization, reverse_delete_rule=CASCADE, required=True)
-    project = ReferenceField(Project, reverse_delete_rule=CASCADE, required=True)
-    name = StringField(max_length=255, required=True)
+    organization = ReferenceField(Organization, required=True)
+    project = ReferenceField(Project, required=True)
+    name = StringField(required=True, unique_with=['organization', 'project'])
     users = ListField(ReferenceField(User))
-
-    def __str__(self):
-        return self.name
-
+    created_at = DateTimeField()
+    fetched_at = DateTimeField()
     meta = {
-        'collection': 'teams',  # Matches Django's db_table
+        'indexes': [
+            {'fields': ['organization', 'project', 'name'], 'unique': True},
+            {'fields': ['fetched_at']}  # Index for date range queries
+        ]
     }

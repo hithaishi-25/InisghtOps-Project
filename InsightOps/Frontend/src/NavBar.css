@@ -1,0 +1,136 @@
+/* Main styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background: #2c3e50;
+  transition: width 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.open {
+  width: 250px;
+}
+
+/* Toggle button */
+.toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Content styling */
+.navbar-content {
+  padding: 60px 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  padding: 0 20px;
+  white-space: nowrap;
+}
+
+/* Navigation links */
+.nav-links {
+  flex: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  color: #b3c7d8;
+  text-decoration: none;
+  padding: 0 20px;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.nav-links li.active a {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-links li.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: #3498db;
+}
+
+.icon {
+  font-size: 1.2rem;
+  min-width: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  white-space: nowrap;
+  display: none;
+}
+
+.navbar.open .text {
+  display: block;
+}
+
+/* User profile */
+.user-profile {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #3498db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.username {
+  white-space: nowrap;
+  display: none;
+}
+
+.navbar.open .username {
+  display: block;
+}

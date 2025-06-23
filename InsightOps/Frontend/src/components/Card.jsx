@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import { memo } from 'react';
-// import { BriefcaseIcon, FolderIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/solid';
+// import { memo } from 'react';
 
 function Card({ title, number, icon, color }) {
   const IconComponent = icon;
@@ -26,4 +25,4 @@ Card.propTypes = {
   color: PropTypes.string.isRequired,
 };
 
-export default memo(Card);
+export default Card;
