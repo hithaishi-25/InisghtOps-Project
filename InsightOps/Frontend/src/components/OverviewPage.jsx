@@ -1,14 +1,12 @@
-// import { useNavigate } from 'react-router-dom';
-import CardList from './CardList';
+// // import { useNavigate } from 'react-router-dom';
+// import CardList from './CardList';
 
-const OverviewPage = () => {
-//   const navigate = useNavigate();
+// const OverviewPage = () => {
+//   return (
+//     <div>
+//       <CardList/>
+//     </div>
+//   );
+// };
 
-  return (
-    <div>
-      <CardList/>
-    </div>
-  );
-};
-
-export default OverviewPage;
+// export default OverviewPage;

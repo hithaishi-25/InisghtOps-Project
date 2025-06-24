@@ -1,13 +1,7 @@
-// import { useState, useEffect } from 'react';
-// import { BriefcaseIcon, FolderIcon, UsersIcon } from '@heroicons/react/24/solid';
-// import { v4 as uuidv4 } from 'uuid';
-// import axios from 'axios';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
-// import OverviewPage from './components/OverviewPage';
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import CardList from './components/CardList'
-import OrgView from './components/OrgView';
+import GitOrgView from './components/GitOrgView';
 
 const Layout = () => {
   return (
@@ -30,12 +24,8 @@ const router = createBrowserRouter([
         element: <HomePage/>,
       },
       {
-        path: '/cardlist',
-        element: <CardList/>
-      },
-      {
-        path: '/OrgView',
-        element: <OrgView/>
+        path: '/GitOrgView',
+        element: <GitOrgView/>
       },
 
     ]

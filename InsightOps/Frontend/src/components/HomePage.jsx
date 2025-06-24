@@ -6,7 +6,11 @@ function HomePage() {
   const navigate = useNavigate();
 
   const handleOverviewClick = () => {
-    navigate(`/OrgView`);
+    if(selectedOption === 'Git'){
+      navigate(`/GitOrgView`);
+    } else if(selectedOption === 'Azure'){
+      navigate('/AzureOrgView');
+    }
   };
 
   return (

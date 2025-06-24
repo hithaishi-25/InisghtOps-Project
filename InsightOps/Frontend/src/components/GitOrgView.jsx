@@ -3,7 +3,8 @@ import { BriefcaseIcon, FolderIcon, UsersIcon } from '@heroicons/react/24/solid'
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import CardList from './CardList';
-function OverView (){
+
+function GitOrgView (){
     const [cardData, setCardData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -59,4 +60,4 @@ function OverView (){
     
 } 
 
-export default OverView;
+export default GitOrgView;
