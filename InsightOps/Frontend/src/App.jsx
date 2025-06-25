@@ -2,6 +2,9 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
 import GitOrgView from './components/GitOrgView';
+import Projects from './components/Projects';
+import Repositories from './components/Repositories';
+import Users from './components/Users';
 
 const Layout = () => {
   return (
@@ -25,9 +28,20 @@ const router = createBrowserRouter([
       },
       {
         path: '/GitOrgView',
-        element: <GitOrgView/>
+        element: <GitOrgView/>,
       },
-
+      {
+        path: '/projects',
+        element: <Projects/>,
+      },
+      {
+        path: '/repositories',
+        element: <Repositories/>,
+      },
+      {
+        path: '/users',
+        element: <Users/>
+      }
     ]
   }
 ])

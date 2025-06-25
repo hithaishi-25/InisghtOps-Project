@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import Card from './Card';
 
-function CardList({ cards }) {
+function CardList({ cards, onCardClick }) {
   return (
-    <div className="flex justify-center gap-6 mt-4">
+    <div className="flex justify-center gap-7 mt-9">
       {cards.map((card) => (
         <Card
           key={card.id}
@@ -11,6 +11,8 @@ function CardList({ cards }) {
           number={card.number}
           icon={card.icon}
           color={card.color}
+          path={card.path}
+          onCardClick={onCardClick}
         />
       ))}
     </div>
@@ -25,8 +27,14 @@ CardList.propTypes = {
       number: PropTypes.number.isRequired,
       icon: PropTypes.elementType.isRequired,
       color: PropTypes.string.isRequired,
+      path: PropTypes.string,
     })
   ).isRequired,
+  onCardClick: PropTypes.func,
+};
+
+CardList.defaultProps = {
+    onCardClick: () => {},
 };
 
 export default CardList;
