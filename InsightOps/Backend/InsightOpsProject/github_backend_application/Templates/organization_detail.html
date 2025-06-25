@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ organization.name }}</title>
+</head>
+<body>
+    <h1>{{ organization.name }}</h1>
+    <p>Total Repositories: {{ organization.total_repositories }}</p>
+    <p>Total Projects: {{ organization.total_projects }}</p>
+    <p>Active Users: {{ organization.active_users_count }}</p>
+    <h2>Projects</h2>
+    <ul>
+        {% for project in projects %}
+            <li>{{ project.name }} (#{{ project.number }})</li>
+        {% endfor %}
+    </ul>
+    <h2>Users</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }} ({{ user.email|default:"No email" }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
