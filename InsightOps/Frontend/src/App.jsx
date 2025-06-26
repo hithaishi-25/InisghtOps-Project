@@ -5,11 +5,11 @@ import GitOrgView from './components/GitOrgView';
 import Projects from './components/Projects';
 import Repositories from './components/Repositories';
 import Users from './components/Users';
-
+import ViewReport from './components/ViewReports';
 const Layout = () => {
   return (
     <>
-      <NavBar />
+    <NavBar/>
       <div className="content">
         <Outlet />
       </div>
@@ -40,8 +40,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/users',
-        element: <Users/>
-      }
+        element: <Users/>,
+      },
+      { 
+        path: '/view-report', 
+        element: <ViewReport />
+      },
     ]
   }
 ])
@@ -49,8 +53,9 @@ const router = createBrowserRouter([
 
 function App() {
   return(
-    
+    <div>
     <RouterProvider router={router} />
+    </div>
 
   )
 }
