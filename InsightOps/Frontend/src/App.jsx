@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
 import GitOrgView from './components/GitOrgView';
-
+import ViewReport from './components/ViewReports';
 const Layout = () => {
   return (
     <>
@@ -27,7 +27,11 @@ const router = createBrowserRouter([
         path: '/GitOrgView',
         element: <GitOrgView/>
       },
-
+      { 
+        // 1. Change the path to accept a dynamic segment for the org name
+        path: '/view-report', 
+        element: <ViewReport />
+      },
     ]
   }
 ])

@@ -7,11 +7,12 @@ function HomePage() {
 
   const handleOverviewClick = () => {
     if(selectedOption === 'Git'){
-      navigate(`/GitOrgView`);
+      navigate('/GitOrgView'); 
     } else if(selectedOption === 'Azure'){
       navigate('/AzureOrgView');
     }
   };
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
@@ -32,6 +33,7 @@ function HomePage() {
           Get Overview
         </button>
       </div>
+      
     </div>
   );
 }
