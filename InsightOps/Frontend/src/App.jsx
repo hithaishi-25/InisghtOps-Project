@@ -6,7 +6,7 @@ import GitOrgView from './components/GitOrgView';
 const Layout = () => {
   return (
     <>
-      <NavBar />
+    <NavBar/>
       <div className="content">
         <Outlet />
       </div>
@@ -35,8 +35,9 @@ const router = createBrowserRouter([
 
 function App() {
   return(
-    
+    <div>
     <RouterProvider router={router} />
+    </div>
 
   )
 }
