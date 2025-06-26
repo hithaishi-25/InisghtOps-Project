@@ -3,11 +3,19 @@ import { BriefcaseIcon, FolderIcon, UsersIcon } from '@heroicons/react/24/solid'
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import CardList from './CardList';
+import { useNavigate } from 'react-router-dom';
 
 function GitOrgView (){
     const [cardData, setCardData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
+
+    const handleCardClick = (path) => {
+        if (path) {
+            navigate(path);
+        }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,9 +31,9 @@ function GitOrgView (){
 
             // Map the API response to card data
             const data = [
-                { title: 'Projects', number: apiData.total_projects, icon: BriefcaseIcon, color: 'bg-red-500' },
-                { title: 'Repos', number: apiData.total_repositories, icon: FolderIcon, color: 'bg-blue-500' },
-                { title: 'Users', number: apiData.active_users_count, icon: UsersIcon, color: 'bg-red-500' },
+                { title: 'Projects', number: apiData.total_projects, icon: BriefcaseIcon, color: 'bg-[#7C3AED]', path: '/projects' },
+                { title: 'Repositories', number: apiData.total_repositories, icon: FolderIcon, color: 'bg-[#7C3AED]', path: '/repositories' },
+                { title: 'Users', number: apiData.active_users_count, icon: UsersIcon, color: 'bg-[#7C3AED]', path: '/users' },
             ];
 
             // Add unique IDs to each card
@@ -49,10 +57,12 @@ function GitOrgView (){
     return (
     <>
         <div className="text-center p-4">
-        <h1 className="text-3xl font-bold text-blue-600">Organization Dashboard</h1>
-        {loading && <p className="mt-4 text-gray-600">Loading...</p>}
-        {error && <p className="mt-4 text-red-600">Error: {error}</p>}
-        {!loading && !error && <CardList cards={cardData} />}
+        <h1 className="text-4xl font-bold text-[#111827]">Organization Dashboard</h1>
+        {loading && <p className="mt-4 text-[#111827]">Loading...</p>}
+        {error && <p className="mt-4 text-red-700">Error: {error}</p>}
+        {!loading && !error && (
+            <CardList cards={cardData} onCardClick={handleCardClick} />
+            )}
         </div>
     </>
 
