@@ -11,7 +11,7 @@ function Card({ title, number, icon, color, path, onCardClick }) {
         hover:scale-65
         hover:-translate-y-1
         hover:ring-4
-        hover:ring-blue-600
+        hover:ring-[#111827]
       ` 
     : 'cursor-default';
 
@@ -25,11 +25,11 @@ function Card({ title, number, icon, color, path, onCardClick }) {
     >
       {/* Icon Section */}
       <div className={`w-20 h-20 ${color} rounded-full flex items-center justify-center`}>
-        <IconComponent className="w-10 h-10 text-white" />
+        <IconComponent className="w-10 h-10 text-[#F9FAFB]" />
       </div>
       {/* Content Section */}
       <div className="flex flex-col items-center mt-1 text-center">
-        <h3 className="text-base font-semibold text-black">{title}</h3>
+        <h3 className="text-base font-semibold text-[#1F2937]">{title}</h3>
         <p className="text-sm text-black">{number}</p>
       </div>
     </div>

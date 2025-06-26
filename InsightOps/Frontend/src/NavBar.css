@@ -1,3 +1,11 @@
+:root {
+  --color-primary: #7C3AED;   /* Royal Violet */
+  --color-secondary: #111827;  /* Obsidian */
+  --color-accent: #F472B6;    /* Electric Rose */
+  --color-background: #F9FAFB; /* Soft Ice */
+  --color-text-on-dark: #E5E7EB; /* Ash Veil */
+}
+
 /* Main styling */
 .navbar {
   position: fixed;
@@ -5,11 +13,11 @@
   left: 0;
   height: 100vh;
   width: 80px;
-  background: #2c3e50;
+  background: var(--color-secondary);
   transition: width 0.3s ease;
   z-index: 1000;
   overflow: hidden;
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .navbar.open {
@@ -21,7 +29,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  color: white;
+  color: var(--color-background);
   cursor: pointer;
   z-index: 2;
 }
@@ -35,7 +43,7 @@
 }
 
 .logo {
-  color: white;
+  color: var(--color-background);
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
@@ -63,20 +71,20 @@
   display: flex;
   align-items: center;
   height: 50px;
-  color: #b3c7d8;
+  color: var(--color-text-on-dark);
   text-decoration: none;
   padding: 0 20px;
   transition: all 0.3s ease;
 }
 
 .nav-links li a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--color-background);
 }
 
 .nav-links li.active a {
-  color: white;
-  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-background);
+  background: rgba(124, 58, 237, 0.2);
 }
 
 .nav-links li.active::before {
@@ -86,7 +94,7 @@
   top: 0;
   height: 100%;
   width: 4px;
-  background: #3498db;
+  background: var(--color-primary);
 }
 
 .icon {
@@ -111,15 +119,15 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-background);
+  border-top: 1px solid rgba(249, 250, 251, 0.1);
 }
 
 .avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #3498db;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
