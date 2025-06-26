@@ -26,18 +26,12 @@ const NavBar = () => {
       <div className="navbar-conetent">
         <div className="logo"></div>
         <ul className="nav-links">
-          {navItems.map((item) => (
-            <li 
-              key={item.name}
-              className={activeLink === item.name.toLowerCase() ? 'active' : ''}
-              onClick={() => setActiveLink(item.name.toLowerCase())}
-            >
-              <Link to={item.path}>
-                <span className="icon">{item.icon}</span>
-                <span className="text">{item.name}</span>
-              </Link>
-            </li>
-          ))}
+        {[
+          "Org Overview", "Project Details", "Query Work Items", "User Groups",
+          "Activities", "Kanban", "Commits", "Pull Requests", "Approver",
+        ].map((item, index) => (
+          <li key={index} className="hover:bg-blue-700 p-2 rounded">{item}</li>
+        ))}
         </ul>
 
         <div className="user-profile">
